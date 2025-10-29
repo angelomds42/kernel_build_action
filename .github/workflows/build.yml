@@ -1,4 +1,3 @@
-# A simple action usage
 name: Build Kernel
 on:
   workflow_dispatch:
@@ -7,24 +6,22 @@ jobs:
   Build-Kernel:
     strategy:
       fail-fast: false
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
 
     steps:
       - name: Build Kernel
-        uses: dabao1955/kernel_build_action@main
+        uses: angelomds42/kernel_build_action@main
         with:
-          kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
+          kernel-url: https://github.com/knyprjkt/android_kernel_xiaomi_spes
           kernel-dir: msm-4.19
-          kernel-branch: taffy
-          config: cas_defconfig
+          kernel-branch: reze
+          config: vendor/spes-perf_defconfig
           arch: arm64
-          aosp-gcc: true
           aosp-clang: true
-          ksu: true
-          ksu-version: main
-          android-version: 12
-          aosp-clang-version: r383902
-          disable-lto: true
+          android-version: 16
+          aosp-clang-version: r547379
           anykernel3: true
+          anykernel3-url: https://github.com/mrsrimar22/AnyKernel3
+          depth: 1
